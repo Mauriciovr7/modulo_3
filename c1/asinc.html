@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>asincrono</title>
+</head>
+<body>
+  <script>
+    // Ejercicio asincrónico 01
+
+    // clase
+    class Libro {
+      constructor(nom, autor, editorial, gen) {
+        this.nombre = nom
+        this.autor = autor
+        this.editorial = editorial
+        this.genero = gen
+      }
+      // métodos
+      mostrarLibro() {
+        return `Nombre: "${this.nombre}" - Autor: "${this.autor}" - Editorial: "${this.editorial}" - Género: "${this.genero}"`
+      }
+    }
+
+    // instancias
+    const libro1 = new Libro('El viaje de Mina', 'Michael Ondaatje', 'Alfaguara', 'Novela')
+    const libro2 = new Libro('El Paciente Inglés', 'Michael Ondaatje', 'Destino', 'Literatura inglesa')
+    const libro3 = new Libro('Los tres cerditos', 'Maria Rius', 'Viking Press', 'Fábula')
+
+    const libros = [libro1, libro2, libro3]
+
+    // function filtrarPorAutor(array, autor) {
+    //   const libros_autor = []
+    //   array.forEach(function (libro) {
+    //     if (libro.autor == autor) {
+    //       libros_autor.push(libro.nombre)
+    //     }
+    //   })
+    //   return libros_autor
+    // }
+
+    // function filtrarPorAutor(array, autor) {
+    //   return array.filter(function(lib) {
+    //     return lib.autor == autor
+    //   })
+    // }
+
+    const cubo = (num) => num * num * num // flecha
+
+    function filtrarPorAutor(array, autor) {
+        return array.filter( lib => lib.autor == autor)
+    }
+
+
+  </script>
+</body>
+</html>

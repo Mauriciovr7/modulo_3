@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clases y objetos</title>
+</head>
+
+<body>
+  <h2>Clases y objetos</h2>
+  <h3 id="personaje"></h3>
+  <script>
+
+    class Persona {
+      constructor(nom, edad, prof) { // parámetros siempre poner un constructor
+        this.nombre = nom // this hace referencia a la Persona
+        this.edad = edad // edad de la persona q se va a crear en esta instancia
+        this.profesion = prof
+      }
+      // métodos
+      print(css) {
+        const tag = document.querySelector(css)
+        tag.textContent = this.nombre // `${this.nombre} - ${this.profesion}`
+      }
+    }
+
+    // p1.print('h3')
+
+
+
+    const p1 = new Persona('Pedro Picapiedra', 30, 'operador dinosaurio') // instancia de la clase Persona
+    const p2 = new Persona('Pablo Mármol', 29, 'constructor') // instancia de la clase Persona
+
+    p1.ciudad = 'Piedradura'
+    p1.frase = 'yabadabaduuu'
+
+    const personas = [p1, p2]
+
+  </script>
+</body>
+
+</html>
