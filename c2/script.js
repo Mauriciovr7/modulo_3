@@ -122,14 +122,14 @@ function msj(dia) {
   alert(`El día de la semana es ${dia} `) // el dia de semana es 
 }
 
-function dia(num) { //num
+function dia() { //num
   const dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
-  // const fecha = new Date()
+  const fecha = new Date()
   // console.log(fecha) // Mon Jun 13 2022 11:35:03 GMT-0400 (hora estándar de Chile)
-  // const day = fecha.getDay()
+  const day = fecha.getDay()
   // console.log(day) // 1
   // console.log(dias[day-1])
-  let dd = dias[num-1]
+  let dd = dias[day-1]
   dd != undefined ? msj(dd) : console.log(' día no existe ')
   //console.log(dd)
 
