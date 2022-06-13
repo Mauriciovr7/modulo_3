@@ -12,7 +12,7 @@
 
     // clase
     class Libro {
-      constructor(nom, autor, editorial, gen) {
+      constructor(nom, autor, editorial, gen) { // método especial para la construccion de un objeto
         this.nombre = nom
         this.autor = autor
         this.editorial = editorial
@@ -47,7 +47,8 @@
     //   })
     // }
 
-    const cubo = (num) => num * num * num // flecha
+    const cubo = (num) => num * num * num // funcion flecha
+    // cubo(3) = 27
 
     function filtrarPorAutor(array, autor) {
         return array.filter( lib => lib.autor == autor)

@@ -11,6 +11,15 @@
 <body>
   <h2>Clases y objetos</h2>
   <h3 id="personaje"></h3>
+  <p></p>
+
+  <p id="myP"> This element has extra spacing and contains <span>a span element</span>.</p>
+
+  <button onclick="getinnerHTML()">Get innerHTML</button>
+  <button onclick="getinnerText()">Get innerText</button>
+  <button onclick="gettextContent()">Get textContent</button>
+
+  <pre id="demo"></pre>
   <script>
 
     class Persona {
@@ -20,13 +29,16 @@
         this.profesion = prof
       }
       // métodos
-      print(css) {
-        const tag = document.querySelector(css)
-        tag.textContent = this.nombre // `${this.nombre} - ${this.profesion}`
+      print(etiqueta) {
+        const tag = document.querySelector(etiqueta)
+        //tag.textContent = this.nombre // `${this.nombre} - ${this.profesion}`
+        tag.innerHTML = this.nombre // `${this.nombre} - ${this.profesion}`
+
       }
     }
 
     // p1.print('h3')
+    // p1.print('p')
 
 
 
@@ -38,6 +50,25 @@
 
     const personas = [p1, p2]
 
+    // The textContent property sets or returns the text content of the specified node
+    // The textContent property returns:The text content of the element and all descendaces, with spacing and CSS hidden text, but without tags.
+    function gettextContent() {
+      let text = document.getElementById("myP").textContent;
+      document.getElementById("demo").innerText = text;
+    }
+
+    // The innerHTML property sets or returns the HTML content (inner HTML) of an element.
+    // The innerHTML property returns:The text content of the element, including all spacing and inner HTML tag
+    function getinnerHTML() {
+      let text = document.getElementById("myP").innerHTML;
+      document.getElementById("demo").innerText = text;
+    }
+
+    // The innerText property returns:Just the text content of the element and all its children, without CSS hidden text spacing and tags, except <script> and <style> elements.
+    function getinnerText() {
+      let text = document.getElementById("myP").innerText;
+      document.getElementById("demo").innerText = text;
+    }
   </script>
 </body>
 
