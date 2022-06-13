@@ -88,7 +88,7 @@ const a1 = new Auto('Hyundai', 'Getz', '2006', '5')
 
 class Autos_gas extends Auto {
   // metodos
-  acelerar(){
+  acelerar() {
     alert('Acelerando... con gas ')
   }
 }
@@ -97,7 +97,7 @@ const a2 = new Autos_gas('Hyundai', 'Getz', '2006', '5')
 
 class Autos_nafta extends Auto {
   // metodos
-  acelerar(){
+  acelerar() {
     alert('Acelerando... con nafta ')
   }
 }
@@ -106,7 +106,7 @@ const a3 = new Autos_nafta('Hyundai', 'Getz', '2006', '5')
 
 class Autos_electrico extends Auto {
   // metodos
-  acelerar(){
+  acelerar() {
     alert('Acelerando... con electricidad ')
   }
 }
@@ -119,19 +119,25 @@ const a4 = new Autos_electrico('Hyundai', 'Getz', '2006', '5')
 // programa que use el Objeto Date() para devolver un alert que exprese qué día de la semana es
 
 function msj(dia) {
-  alert(`El día de la semana es ${dia} `) // el dia de semana es 
+  alert(`El día de la semana es ${dia} `) // el dia de semana es lunes
 }
 
 function dia() { //num
-  const dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+  const dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
   const fecha = new Date()
   // console.log(fecha) // Mon Jun 13 2022 11:35:03 GMT-0400 (hora estándar de Chile)
   const day = fecha.getDay()
   // console.log(day) // 1
-  // console.log(dias[day-1])
-  let dd = dias[day-1]
+  // console.log(dias[day-1]) // dias[0] == lunes
+  let dd = dias[day - 1]
   dd != undefined ? msj(dd) : console.log(' día no existe ')
   //console.log(dd)
 
-
+  const mes = fecha.getMonth()
+  const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+  console.log(meses[mes])
 }
+
+// cuanto aire se necesita para inflar un balon
+
+//const balones_grandes = balones.filter(b => b>=5) // funcion callback usando filter
