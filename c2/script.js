@@ -30,9 +30,7 @@ class Relator extends User { // con herencia (Relator es hija de User), metodos(
 // instancias
 const u1 = new User('Anthony Reyes', 'Fullstack JS', 'âillaco II')
 const u2 = new User('Victoria Islame', 'Fullstack JS', 'âillaco II')
-const u3 = new User('Matías Bensan', 'Fullstack JS', 'âillaco II')
-
-
+const u3 = new Relator('Matías Bensan', 'Fullstack JS', 'âillaco II', ['Paillaco I'])
 
 const anthony = {
   nombre: 'Anthony Reyes',
@@ -47,9 +45,12 @@ const anthony = {
 // u1.notificar // funcion
 // u1.notificar() // Bienvenido Anthony Reyes
 
+// u3 // Relator {nombre: 'Matías Bensan', curso: 'Fullstack JS', generacion: 'âillaco II', cursos_anteriores: Array(1)}
+// u3.init_zoom() // Abriendo llamada zoom
+
 // u1 instanceof User // true
-// u3 // Relator {nombre: etc}
 // u3 instanceof User // true
+// u3.notificar() // Bienvenido Matías Bensan
 
 
 // Ejercicio en clase 01 **********************
