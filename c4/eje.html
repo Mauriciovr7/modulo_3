@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    //AJAX
+
+    // array
+    //DESAFIO: Como invertir un arreglo???
+
+    // [55, 21, 9] => [9, 21, 55]
+    let arr = ['alfa', 'beta', 'gama']
+    arr = arr.reverse()
+    console.log(arr)
+
+    // hacerlo con un string
+    let arr2 = 'alfa beta gama'
+    arr2.split('').reverse().join('') // 'amag ateb afla'
+
+    const pal = 'ropa'
+    pal.split('').reverse().join('')// 'apor'
+
+
+    // clima
+    $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=San%20Francisco&appid=95176c8edea30e33338e0eaddd53a916&units=metric&lang=es",
+      function (data) {
+        console.log(data)
+      })
+
+    $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=San%20Francisco&appid=95176c8edea30e33338e0eaddd53a916&units=metric&lang=es",
+      function (data) {
+        console.log(data.main.temp)
+      })
+
+      $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=Santiago&appid=95176c8edea30e33338e0eaddd53a916&units=metric&lang=es",
+      function (data) {
+        console.log('santiago ', data.main.temp)
+      })
+
+      $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=Viña%20Del%20Mar&appid=95176c8edea30e33338e0eaddd53a916&units=metric&lang=es",
+      function (data) {
+        console.log('viña ', data.main.temp)
+      })
+
+  </script>
+</body>
+
+</html>
