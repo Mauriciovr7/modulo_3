@@ -25,7 +25,7 @@ describe('Propiedades de un object-literal', function() {
       expect(obj['proximo'](123)).toEqual(124);
     });
 
-    it('agrega objetos anidados para guardar la clave secreta 404', function() { // okha
+    it('agrega objetos anidados para guardar la clave secreta 404', function() { // ok
       expect(obj.la.clave.secreta.es).toEqual(404);
     });
   });
@@ -84,7 +84,7 @@ describe('Propiedades en una Función', function() {
   });
 
   describe('Función `functionObject`', function() {
-    it('devuelve correctamente el string que se declaro en el `beforeEach` para `functionObject`', function() {
+    it('devuelve correctamente el string que se declaro en el `beforeEach` para `functionObject`', function() { //ok
       expect(functionObject()).toEqual('Soy una función con propiedades!');
     });
   });
