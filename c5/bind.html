@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bind</title>
+</head>
+
+<body>
+  <h2>This</h2>
+  <ul id="desordenadas">
+    <li>Juan</li>
+    <li>Sofi</li>
+
+  </ul>
+  <ol id="ordenadas">
+    <li>Gaby</li>
+  </ol>
+
+  <script>
+    var persona = {
+      nombre: "George",
+      apellido: "Lucas",
+      getNombre: function () {
+        var nombreCompleto =
+          this.nombre + " " +
+          this.apellido
+        return nombreCompleto
+      },
+    }
+    var logNombre = function () {
+      console.log(this.getNombre())
+    }
+    // logNombre() // this.getNombre is not a function
+
+    var logNombrePersona = logNombre.bind(persona) // La función bind() devuelve una copia de la función
+    logNombrePersona() // George Lucas
+
+    // **************************
+    // const p1 = {
+    //   nombre: 'Pedro',
+    //   edad: 40,
+    //   saludar: function() {
+    //     console.log(`Hola, soy ${p1.nombre}`)
+    //   }
+    // }
+
+    // Bind = vincular, enlazar, ligar función, pasar this, ligar this, copia
+    class Persona {
+      constructor(nombre, edad) {
+        this.nombre = nombre
+        this.edad = edad
+      }
+
+      saludar() {
+        console.log(`Hola, soy ${this.nombre}`) // instancia al objeto persé
+      }
+    }
+
+    const p1 = new Persona('Pedro', 30)
+    const p2 = new Persona('María', 24)
+
+
+    // call , ejecuta
+
+
+    // closure = clausura, encapsular = (sirve para guardar estados)
+    function add_li (selector_css) { // funcion add_li es la clausura
+      const lista = document.querySelector(selector_css)
+
+      return function(persona) {
+        lista.innerHTML += `<li>${persona.nombre}</li>` // funcion interna q accede a lista, sigue teniendo acceso(aunq add_li ya no existe)
+      }
+    }
+
+    // const add_ordenada = add_li('#ordenadas')
+    // add_ordenada(p1) // agregar Pedro a la lista
+
+    // const add_ordenada = add_li('#ordenadas') // creo add_li
+    // add_ordenada(p1)
+
+    // closure = clausura, encapsular
+    /*
+    Es una función que hace referencia a variables en el ámbito externo desde su ámbito interno.
+    Conserva el ámbito exterior dentro de su ámbito interior. Primero debe saber cómo funciona el alcance léxico.
+    Es la combinación de una función agrupada (encerrada) con referencias a su estado circundante
+    (el entorno léxico). En otras palabras, le da acceso al alcance de una función externa desde una función interna
+    Es una función que tiene acceso a la variable desde el ámbito de otra función.
+    Esto se logra creando una función dentro de una función.
+    Por supuesto, la función exterior no tiene acceso al ámbito interior.
+    Esto se llama un cierre de JavaScript. Hace posible que una función tenga variables "privadas".
+    El contador está protegido por el alcance de la función anónima
+    y solo se puede cambiar mediante la función de agregar.
+    Un cierre es una función que tiene acceso al ámbito principal,
+    incluso después de que la función principal se haya cerrado.
+    */
+    function numberGenerator () { // funcion numberGenerator es la clausura, tiene encapsulado num (sirve para guardar estados), (funcion grande)
+      let num = 1 // encapsula a variable num
+
+      function checkNumber() { // (funcion chica)
+        console.log(num)
+      }
+      num++
+
+      return checkNumber
+    }
+    const numero = numberGenerator() // retorna una funcion (accede al universo interno de la función) y al estado de la variable
+    // pero con el tiempo es eliminada de la memoria
+
+  </script>
+</body>
+
+</html>
