@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Solicitudes Asíncronas</h1>
+      <h2 class="text-center">Personaje: <span id="personaje"></span></h2>
+      <h3> <input type="number" max="30" id="id_personaje"> <button>Buscar</button> </h3>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+      // etiquetas HTML
+      const span_personaje = document.querySelector('#personaje');
+      const input_id = document.querySelector('#id_personaje');
+      const button = document.querySelector('button');
+
+      button.addEventListener('click', function () {
+        // callback cuando usuario haga click en el botón
+        const id_personaje = input_id.value;
+        // llamada a la API
+        fetch('https://swapi.dev/api/people/' + id_personaje)
+        .then(datos => datos.json())//callback se transforma en objeto json
+        // .then(personaje => console.log(personaje))//callback datos perse se puede usar en DOM
+        .then(personaje => fetch(personaje.homeworld))//planeta
+        .then(personaje => console.log(personaje))//callback datos perse se puede usar en DOM
+        .catch(error => console.log(error))//callback
+
+        $.getJSON('https://swapi.dev/api/people/' + id_personaje, function (personaje) {
+          // cuando llegue la respuesta
+          console.log(personaje);
+          
+          // vamos a buscar los datos del planeta natal del personaje
+          $.getJSON(personaje.homeworld, function (planeta) {
+            console.log(planeta);
+
+            // vmaos a buscar los datos de la primera pelicula en que aparece ese planeta
+            $.getJSON(planeta.films[0], function (pelicula) {
+              console.log(pelicula);
+              span_personaje.textContent = `${personaje.name} es del planeta ${planeta.name} (${pelicula.title})`;
+            })
+          })
+        });
+      });
+      // CALLBACK HELL
+
+      // fib 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+      //  i  1, 2, 3, 4, 5, 6,  7,  8,  9, 10, 11, ...
+
+      // function fibonacci (i) {
+      //   if (i == 1 || i == 2) {
+      //     return 1;
+      //   }
+
+      //   return fibonacci(i-1) + fibonacci(i-2);
+      // }
+
+    </script>
+  </body>
+</html>

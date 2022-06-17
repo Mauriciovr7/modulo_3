@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // setTimeout
+    function sum(x, y) {
+      console.log(x + y);
+    }
+    setTimeout(function () {
+      sum(2, 2);
+    }, 1000); // si ponemos 0 al segundo param de setTimeout igual se ejecutará despues
+    sum(4, 4);
+
+    // callback
+    function saludar(nombre) {
+      console.log("Hola " + nombre);
+    }
+    function recibirInvitadoJuan(callback) {
+      var invitado = "Juan";
+      callback(invitado);
+    }
+    recibirInvitadoJuan(saludar); // Hola Juan (entre el 8 y el 4)
+
+    function saludar(nombre) {
+      console.log("Hola " + nombre);
+    }
+    function
+      recibirJuanMasTarde(callback) {
+      setTimeout(function () {
+        var invitado = "Juan";
+        callback(invitado);
+      }, 5000);
+    }
+    recibirJuanMasTarde(saludar);
+    // ... (Espera por 5 segundos)
+    // Hola Juan
+  </script>
+</body>
+
+</html>

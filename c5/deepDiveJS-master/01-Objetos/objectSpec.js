@@ -106,7 +106,7 @@ describe('Propiedades en una Función', function() {
       Por ahora solo vamos a notar su existencia, mas adelante veremos mas a fondo que es lo que hace.
     */
     it('agrega una propiedad al objeto `prototype` que es propio de las funciones', function() {
-      expect(functionObject.prototype.helloWorld()).toEqual('Hello World');
+      expect(functionObject.prototype.helloWorld()).toEqual('Hello World'); // todas las func tienen prototype
     }); 
   });
 

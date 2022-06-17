@@ -19,16 +19,16 @@ function scopes() { // no es closure
 function bloque(){
   var nombre = 'Facu';
 
-  function cambio(){
+  function cambio(){ // func interna (closure) mundo aparte cada func tiene su propio universo(se puede mirar hacia afuera pero de afuera no se puede mirar hacia adentro)
     var nombre = 'Toni'; // no era
   }
 
-  if (true) {
-    var nombre = 'Guille';
+  if (true) { // siempre es verdadera
+    var nombre = 'Guille'; // var no respeta las funciones (scope)
   }
   
-  cambio();
-  return nombre;
+  cambio(); // existe y muere al mismo tiempo
+  return nombre; // retorno de la func bloque
 }
 
 function igualdad() {
@@ -45,7 +45,7 @@ function boolean(bool) {
       bazz = 3;
 
   if (bool){
-    return foo < bar < bazz;
+    return foo < bar < bazz; // se deben usar paréntesis
 
   } else {
     return bar < foo < bazz; // && or ||
