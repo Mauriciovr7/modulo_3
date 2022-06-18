@@ -23,30 +23,51 @@
 
       button.addEventListener('click', function () {
         // callback cuando usuario haga click en el botón
+
         const id_personaje = input_id.value;
-        // llamada a la API
+        let nombre_planeta
+        let nombre_personaje
+
+        // llamada a la API con fetch
         fetch('https://swapi.dev/api/people/' + id_personaje)
-        .then(datos => datos.json())//callback se transforma en objeto json
-        // .then(personaje => console.log(personaje))//callback datos perse se puede usar en DOM
-        .then(personaje => fetch(personaje.homeworld))//planeta
-        .then(personaje => console.log(personaje))//callback datos perse se puede usar en DOM
+
+        .then(datos => datos.json())//callback. se transforma en objeto json
+        .then(personaje => {
+          nombre_personaje = personaje.name
+          return fetch(personaje.homeworld) // debe llevar return
+        })       
+
+        .then(planeta => planeta.json())//solicitud planeta
+        .then(planeta => {
+          nombre_planeta = planeta.name
+          return fetch(planeta.films[0])
+        })
+        //.then(planeta => console.log('fetch planeta, pers ', nombre_planeta, nombre_personaje))
+
+        .then(pelicula => pelicula.json())
+        .then(pelicula => {
+          span_personaje.textContent = `${nombre_personaje} es del planeta ${nombre_planeta} (${pelicula.title})`;
+        })
+
         .catch(error => console.log(error))//callback
 
-        $.getJSON('https://swapi.dev/api/people/' + id_personaje, function (personaje) {
-          // cuando llegue la respuesta
-          console.log(personaje);
+        // llamada a la API con AJAX y CALLBACKS anidados
+        // $.getJSON('https://swapi.dev/api/people/' + id_personaje, function (personaje) { // datos
+        //   // cuando llegue la respuesta
+        //   console.log('getJSON', personaje);
           
-          // vamos a buscar los datos del planeta natal del personaje
-          $.getJSON(personaje.homeworld, function (planeta) {
-            console.log(planeta);
+        //   // vamos a buscar los datos del planeta natal del personaje
+        //   $.getJSON(personaje.homeworld, function (planeta) { // datos
+        //     console.log('planeta', planeta);
 
-            // vmaos a buscar los datos de la primera pelicula en que aparece ese planeta
-            $.getJSON(planeta.films[0], function (pelicula) {
-              console.log(pelicula);
-              span_personaje.textContent = `${personaje.name} es del planeta ${planeta.name} (${pelicula.title})`;
-            })
-          })
-        });
+        //     // vamos a buscar los datos de la primera pelicula en que aparece ese planeta
+        //     $.getJSON(planeta.films[0], function (pelicula) { // datos
+        //       console.log('pelicula', pelicula);
+        //       //  en DOM
+        //       span_personaje.textContent = `${personaje.name} es del planeta ${planeta.name} (${pelicula.title})`;
+        //     })
+        //   })
+        // });
       });
       // CALLBACK HELL
 

@@ -13,7 +13,7 @@ describe('Calculadora que use notación polaca inversa', function() {
   it('Sumo dos números', function() {
     // Infija: 2 + 3
     // Postfija: 2 3 +
-    calculadora.agregar(2);
+    calculadora.agregar(2); // metodos
     calculadora.agregar(3);
     calculadora.sumar();
     expect(calculadora.valor()).toEqual(5);

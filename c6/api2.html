@@ -34,7 +34,6 @@
       // callback cuando usuario haga click en el botón
       let nombre_personaje
       let nombre_planeta
-      let planeta
 
       const id_personaje = input_id.value;
       // llamada a la API
@@ -42,8 +41,14 @@
         .then(datos => datos.json())//callback se transforma en objeto json
         // .then(personaje => console.log(personaje))//callback datos perse se puede usar en DOM
         .then(personaje => fetch(personaje.homeworld))//planeta
+        
         .then(planeta => planeta.json())//planeta
-        .then(planeta => fetch(planeta.films[0]))//planeta
+        .then(planeta => {
+          nombre_planeta = planeta.name
+          fetch(planeta.films[0])
+        })
+
+        // .then(planeta => fetch(planeta.films[0]))//planeta
         .then(pelicula => pelicula.json())
         .then(pelicula => {
           span_personaje.textContent = `${personaje.name} es del planeta ${planeta.name} (${pelicula.title})`;
